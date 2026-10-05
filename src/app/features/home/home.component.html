@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2 class="text-upeu-primary mb-4">Nuestro Catalago de Productos</h2>
+    <div class="row">
+        @for (prod of productos; track prod.id) {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img [src]="prod.imagen" class="card-img-top" alt="{{prod.nombre}}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{prod.nombre}}</h5>
+                        <p class="card-text">{{prod.descripcion}}</p>
+                        <h4 class="text-upeu-primary">${{prod.precio}}</h4>
+                        <button class="btn btn-upeu">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
