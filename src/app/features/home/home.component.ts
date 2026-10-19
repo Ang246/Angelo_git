@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductoService } from '../../core/services/producto.service';
 import { Producto } from '../../core/interfaces/producto.interface';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { Producto } from '../../core/interfaces/producto.interface';
 })
 export class HomeComponent implements OnInit{
   private productoService = inject(ProductoService);
+  private cartService = inject(CartService);
 
   productos: Producto[] = [];
 
@@ -23,6 +25,10 @@ export class HomeComponent implements OnInit{
       next:(data) => this.productos = data,
       error:(err) => console.error('Error al cargar los productos:', err)
     })
+  }
+
+  agregarAlCarrito(producto: Producto){
+    this.cartService.agregarProducto(producto);
   }
   
 }
